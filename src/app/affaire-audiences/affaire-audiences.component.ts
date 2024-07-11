@@ -54,16 +54,20 @@ export class AffaireAudiencesComponent implements OnInit {
     this.selectedAudience = { ...audience };
   }
 
-  updateAudience() {
-    this.audienceService.updateAudience(this.selectedAudience.id, this.selectedAudience).subscribe(
-      () => {
-        this.loadAudiences(this.affaireId);
-        this.selectedAudience = null;
-      },
-      error => {
-        console.error('Erreur lors de la mise à jour d\'une audience:', error);
-      }
-    );
+  updateAudience(): void {
+    if (this.selectedAudience) {
+      this.audienceService.updateAudience(this.selectedAudience.id, this.selectedAudience)
+        .subscribe({
+          next: () => {
+            console.log("Audience mise à jour avec succès");
+            this.loadAudiences(this.affaireId);
+            this.selectedAudience = null;
+          },
+          error: (error: any) => {
+            console.error("Erreur lors de la mise à jour d'une audience:", error);
+          }
+        });
+    }
   }
 
   deleteAudience(id: number) {

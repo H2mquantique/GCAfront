@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -26,9 +26,9 @@ export class AudienceService {
     return this.http.post<any>(this.apiUrl, audience);
   }
 
-  // Méthode pour mettre à jour une audience
+  // Méthode pour mettre à jour une audience existante
   updateAudience(id: number, audience: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/${id}`, audience);
+    return this.http.put<any>(`${this.apiUrl}/update/${id}`, audience);
   }
 
   // Méthode pour supprimer une audience
