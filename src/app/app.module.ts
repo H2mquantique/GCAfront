@@ -27,6 +27,7 @@ import { AffaireComponent } from './affaire/affaire.component';
 import { ListDossierComponent } from './list-dossier/list-dossier.component';
 import { AffaireAudiencesComponent } from './affaire-audiences/affaire-audiences.component';
 import { AudiencesByDayComponent } from './audiences-by-day/audiences-by-day.component';
+import { ClientListComponent } from './client-list/client-list.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { AudiencesByDayComponent } from './audiences-by-day/audiences-by-day.com
     ListDossierComponent,
     AffaireAudiencesComponent,
     AudiencesByDayComponent,
+    ClientListComponent,
 
     
 

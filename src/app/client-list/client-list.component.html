@@ -1,0 +1,63 @@
+<div>
+  <h2>Liste des clients</h2>
+  <ul>
+    <li *ngFor="let client of clients">
+      {{ client.username }} - {{ client.statut }}
+      <button (click)="editClientInit(client)">Modifier</button>
+      <button (click)="deleteClient(client.id)">Supprimer</button>
+    </li>
+  </ul>
+
+  <div *ngIf="isEditing">
+    <h3>Modifier Client</h3>
+    <label>Nom d'utilisateur:
+      <input [(ngModel)]="editClient.username" />
+    </label>
+    <label>Nom:
+      <input [(ngModel)]="editClient.lastname" />
+    </label>
+    <label>CIN:
+      <input [(ngModel)]="editClient.cin" />
+    </label>
+    <label>Adresse:
+      <input [(ngModel)]="editClient.adresse" />
+    </label>
+    <label>Téléphone 1:
+      <input [(ngModel)]="editClient.telephone1" />
+    </label>
+    <label>Téléphone 2:
+      <input [(ngModel)]="editClient.telephone2" />
+    </label>
+    <label>Statut:
+      <input [(ngModel)]="editClient.statut" />
+    </label>
+    <button (click)="updateClient()">Sauvegarder</button>
+    <button (click)="cancelEdit()">Annuler</button>
+  </div>
+
+  <div *ngIf="!isEditing">
+    <h3>Ajouter Client</h3>
+    <label>Nom d'utilisateur:
+      <input [(ngModel)]="newClient.username" />
+    </label>
+    <label>Nom:
+      <input [(ngModel)]="newClient.lastname" />
+    </label>
+    <label>CIN:
+      <input [(ngModel)]="newClient.cin" />
+    </label>
+    <label>Adresse:
+      <input [(ngModel)]="newClient.adresse" />
+    </label>
+    <label>Téléphone 1:
+      <input [(ngModel)]="newClient.telephone1" />
+    </label>
+    <label>Téléphone 2:
+      <input [(ngModel)]="newClient.telephone2" />
+    </label>
+    <label>Statut:
+      <input [(ngModel)]="newClient.statut" />
+    </label>
+    <button (click)="addClient()">Ajouter</button>
+  </div>
+</div>

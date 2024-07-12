@@ -1,38 +1,38 @@
 <div *ngIf="dossiers.length > 0; else noDossiers">
     <table class="table">
-      <thead>
-        <tr>
-          <th scope="col">Numéro de Dossier</th>
-          <th scope="col">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let dossier of dossiers">
-          <td>{{ dossier.numeroDossier }}</td>
-          <td>
-            <button class="btn btn-sm btn-primary" (click)="editDossier(dossier)">Modifier</button>
-            <button class="btn btn-sm btn-danger" (click)="deleteDossier(dossier.id)">Supprimer</button>
-            <button class="btn btn-sm btn-primary" (click)="manageAffaires(dossier.id)">Gérer les affaires</button>
-
-          </td>
-        </tr>
-      </tbody>
+        <thead>
+            <tr>
+                <th scope="col">Numéro de Dossier</th>
+                <th scope="col">Client</th>
+                <th scope="col">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let dossier of dossiers">
+                <td>{{ dossier.numeroDossier }}</td>
+                <td>{{ dossier.client?.username }} {{ dossier.client?.lastname }}</td>
+                <td>
+                    <button class="btn btn-sm btn-primary" (click)="editDossier(dossier)">Modifier</button>
+                    <button class="btn btn-sm btn-danger" (click)="deleteDossier(dossier.id)">Supprimer</button>
+                    <button class="btn btn-sm btn-primary" (click)="manageAffaires(dossier.id)">Gérer les affaires</button>
+                </td>
+            </tr>
+        </tbody>
     </table>
-  </div>
-  
-  <ng-template #noDossiers>
+</div>
+
+<ng-template #noDossiers>
     <p>Aucun dossier trouvé.</p>
-  </ng-template>
-  
-  <div *ngIf="editing">
+</ng-template>
+
+<div *ngIf="editing">
     <h3>Modifier Dossier</h3>
     <form (ngSubmit)="saveDossier()">
-      <div class="form-group">
-        <label for="numeroDossier">Numéro de Dossier</label>
-        <input type="text" class="form-control" id="numeroDossier" [(ngModel)]="dossierToEdit.numeroDossier" name="numeroDossier" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Enregistrer</button>
-      <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
+        <div class="form-group">
+            <label for="numeroDossier">Numéro de Dossier</label>
+            <input type="text" class="form-control" id="numeroDossier" [(ngModel)]="dossierToEdit.numeroDossier" name="numeroDossier" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Enregistrer</button>
+        <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Annuler</button>
     </form>
-  </div>
-  
+</div>
